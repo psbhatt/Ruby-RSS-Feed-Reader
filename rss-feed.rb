@@ -33,9 +33,18 @@ class RSS_Feed
 
 end
 
-puts "Enter RSS URL: "
+puts "Which RSS: VLR(A), Reuters(B), Other(C):"
 
-feed = RSS_Feed.new(STDIN.gets.chomp)
+option = STDIN.gets.chomp
+
+if option == 'A'
+  feed = RSS_Feed.new("https://www.vlr.gg/rss")
+elsif option == 'B'
+  feed = RSS_Feed.new("https://www.reutersagency.com/feed/?taxonomy=best-sectors&#038;post_type=best")
+else
+  puts "Enter RSS Url: "
+  feed = RSS_Feed.new(STDIN.gets.chomp)
+end
 
 feed.getFeed
 
